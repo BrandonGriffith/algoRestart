@@ -33,7 +33,8 @@ class Solution {
             hashS[s[i]] = (hashS[s[i]] || 0) + 1;
             hashT[t[i]] = (hashT[t[i]] || 0) + 1;
         }
-        return JSON.stringify(hashS) === JSON.stringify(hashT);
+        return Object.keys(hashS).length === Object.keys(hashT).length
+            && Object.keys(hashS).every((key) => hashS[key] === hashT[key]);
     }
 
     oneArray(s, t) {

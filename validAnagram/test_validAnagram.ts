@@ -1,21 +1,19 @@
 import Solution from './validAnagram.ts';
 
+function assertEqual(actual: boolean, expected: boolean, message: string): void {
+    if (actual !== expected) {
+        throw new Error(message);
+    }
+}
+
 function runTests() {
-    console.log('Running sorting tests...');
-    console.log(Solution.sorting('anagram', 'nagaram') === true ? 'PASS' : 'FAIL');
-    console.log(Solution.sorting('rat', 'car') === false ? 'PASS' : 'FAIL');
+    for (const method of ['sorting', 'oneHash', 'twoHash', 'oneArray'] as const) {
+        assertEqual(Solution[method]('anagram', 'nagaram'), true, `${method} should recognize anagrams`);
+        assertEqual(Solution[method]('rat', 'car'), false, `${method} should reject non-anagrams`);
+    }
 
-    console.log('Running oneHash tests...');
-    console.log(Solution.oneHash('anagram', 'nagaram') === true ? 'PASS' : 'FAIL');
-    console.log(Solution.oneHash('rat', 'car') === false ? 'PASS' : 'FAIL');
-
-    console.log('Running twoHash tests...');
-    console.log(Solution.twoHash('anagram', 'nagaram') === true ? 'PASS' : 'FAIL');
-    console.log(Solution.twoHash('rat', 'car') === false ? 'PASS' : 'FAIL');
-
-    console.log('Running oneArray tests...');
-    console.log(Solution.oneArray('anagram', 'nagaram') === true ? 'PASS' : 'FAIL');
-    console.log(Solution.oneArray('rat', 'car') === false ? 'PASS' : 'FAIL');
-};
+    assertEqual(Solution.twoHash('ab', 'ba'), true, 'twoHash should ignore character insertion order');
+    console.log('All validAnagram tests passed.');
+}
 
 runTests();

@@ -1,17 +1,11 @@
+const assert = require('node:assert/strict');
 const Solution = require('./containsDuplicate');
 
-function runTests() {
-    console.log('Running bruteForce tests...');
-    console.log(Solution.bruteForce([1, 2, 3, 1]) === true ? 'PASS' : 'FAIL');
-    console.log(Solution.bruteForce([1, 2, 3, 4]) === false ? 'PASS' : 'FAIL');
+assert.equal(Solution.bruteForce([1, 2, 3, 1]), true);
+assert.equal(Solution.bruteForce([1, 2, 3, 4]), false);
+assert.equal(Solution.sorting([1, 2, 3, 1]), true);
+assert.equal(Solution.sorting([1, 2, 3, 4]), false);
+assert.equal(Solution.hashing([1, 2, 3, 1]), true);
+assert.equal(Solution.hashing([1, 2, 3, 4]), false);
 
-    console.log('Running sorting tests...');
-    console.log(Solution.sorting([1, 2, 3, 1]) === true ? 'PASS' : 'FAIL');
-    console.log(Solution.sorting([1, 2, 3, 4]) === false ? 'PASS' : 'FAIL');
-
-    console.log('Running hashing tests...');
-    console.log(Solution.hashing([1, 2, 3, 1]) === true ? 'PASS' : 'FAIL');
-    console.log(Solution.hashing([1, 2, 3, 4]) === false ? 'PASS' : 'FAIL');
-};
-
-runTests();
+console.log('All containsDuplicate tests passed.');

@@ -1,3 +1,4 @@
+# pylint: disable=duplicate-code
 """Implementations of the Fibonacci sequence."""
 
 
